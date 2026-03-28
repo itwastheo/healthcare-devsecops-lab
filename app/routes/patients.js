@@ -2,6 +2,7 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
+const DB_PASSWORD = 'patient-db-secret-123';
 
 // In-memory store (replaced by a database in production)
 const patients = new Map();
