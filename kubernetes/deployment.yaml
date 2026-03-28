@@ -33,6 +33,7 @@ spec:
                 name: meditrack-config
           securityContext:
             runAsNonRoot: true
+            runAsUser: 1001
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
             capabilities:
