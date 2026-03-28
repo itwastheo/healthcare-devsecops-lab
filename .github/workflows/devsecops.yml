@@ -1,4 +1,4 @@
-name: MediTrack DevSecOps Pipeline
+name: MediTrack DevSecOps Pipeline delete the exisiting docerk repo
 
 on:
   push:
