@@ -22,8 +22,6 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: meditrack-api
-          # The pipeline substitutes this placeholder with your DockerHub username
-          # and the commit SHA before deploying (e.g., johndoe/meditrack-api:abc123)
           image: <your-dockerhub-username>/meditrack-api:v1.0.0
           imagePullPolicy: Always
           ports:
@@ -39,13 +37,7 @@ spec:
             capabilities:
               drop:
                 - ALL
-          resources:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 500m
-              memory: 256Mi
+
           livenessProbe:
             httpGet:
               path: /health
@@ -53,15 +45,18 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 15
             failureThreshold: 3
+
           volumeMounts:
             - name: tmp-volume
               mountPath: /tmp
+
           readinessProbe:
             httpGet:
               path: /health
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
+
       volumes:
         - name: tmp-volume
           emptyDir: {}
